@@ -25,7 +25,7 @@
   </head>
 
   <body>
-    <div class="container" style="margin-top: 150px">
+    <div class="container">
       <h1>CSV to HTML Table Example</h1>
       <div id="table-container"></div>
     </div>
@@ -47,9 +47,9 @@
       init_table({
         csv_path: "./data/Health Clinics in Chicago.csv",
         element: "table-container",
-        allow_download: true,
+        allow_download: false,
         csv_options: { separator: ",", delimiter: '"' },
-        datatables_options: { paging: false },
+        datatables_options: { paging: true },
       });
     </script>
   </body>
