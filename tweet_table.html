@@ -25,7 +25,10 @@
   </head>
 
   <body>
-    <div class="container spinner-border">
+    <div class="container">
+      <div id="loading">
+        <img id="loading-image" src="imgs\ajax-loader.gif" alt="Loading..." />
+      </div>
       <div id="table-container"></div>
     </div>
     <!-- /.container -->
@@ -45,6 +48,7 @@
     <script>
       var date = "2020-10-15";
       var topic = "Lockdown";
+      var faction = "TR";
 
       $.urlParam = function (name) {
         var results = new RegExp("[\?&]" + name + "=([^&#]*)").exec(
@@ -56,16 +60,17 @@
 
       date = $.urlParam("date");
       topic = $.urlParam("topic");
+      faction = $.urlParam("faction");
 
-      console.log($.urlParam("date"));
-      console.log($.urlParam("topic"));
+      var csv_file_path =
+        "./data/tweets/" + topic + "/" + faction + "/" + date + ".csv";
 
       init_table({
-        csv_path: "./data/Public/" + topic + "/" + date + ".csv",
+        csv_path: csv_file_path,
         element: "table-container",
         allow_download: false,
         csv_options: { separator: ",", delimiter: '"' },
-        datatables_options: { paging: true, lengthMenu: [5] },
+        datatables_options: { paging: true, lengthMenu: [5, 10, 20, 25] },
       });
     </script>
   </body>
